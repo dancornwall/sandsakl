@@ -1,0 +1,583 @@
+/* =========================================================
+   Sands Auckland Central — prototype stylesheet
+   Palette derived from Baby Loss Awareness Week colours
+   (blue / pink / purple) used in Light Up Aotearoa.
+   ========================================================= */
+
+:root {
+  /* Colour */
+  --ink:        #1F2440;   /* deep night blue — body text, header */
+  --ink-soft:   #4A4F6C;
+  --lilac:      #6B5B8A;   /* BLAW purple */
+  --rose:       #B87D8E;   /* BLAW pink */
+  --paper:      #FBF9F7;   /* warm off-white page */
+  --paper-alt:  #F2EEEA;   /* banded sections */
+  --amber:      #C77D3A;   /* candle — RESERVED for phone/urgent only */
+  --rule:       #DDD6D0;
+
+  /* Type */
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Scale */
+  --step--1: clamp(0.86rem, 0.83rem + 0.15vw, 0.94rem);
+  --step-0:  clamp(1.06rem, 1.00rem + 0.30vw, 1.22rem);
+  --step-1:  clamp(1.30rem, 1.18rem + 0.55vw, 1.62rem);
+  --step-2:  clamp(1.62rem, 1.40rem + 1.00vw, 2.20rem);
+  --step-3:  clamp(2.00rem, 1.60rem + 1.90vw, 3.10rem);
+
+  --measure: 34rem;
+  --gutter: clamp(1.15rem, 4vw, 2.5rem);
+  --radius: 3px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Skip link ---------- */
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 200;
+  font-family: var(--sans);
+}
+.skip:focus { left: 0; }
+
+/* ---------- Focus ---------- */
+:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+.wrap {
+  width: min(68rem, 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+}
+.wrap--narrow { width: min(46rem, 100% - (var(--gutter) * 2)); }
+
+section { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.band { background: var(--paper-alt); }
+
+/* =========================================================
+   HELP BAR — persistent, unconditional, every page.
+   The phone number is the floor of the whole site.
+   ========================================================= */
+.helpbar {
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--sans);
+}
+.helpbar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1.5rem;
+  padding-block: 0.7rem;
+}
+.helpbar__label {
+  font-size: var(--step--1);
+  letter-spacing: 0.02em;
+  color: #C9C5D8;
+  margin: 0;
+}
+.helpbar__tel {
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--step-1);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  border-bottom: 2px solid var(--amber);
+  padding-bottom: 1px;
+}
+.helpbar__tel:hover { color: var(--amber); }
+.helpbar__email {
+  color: #C9C5D8;
+  font-size: var(--step--1);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.helpbar__email:hover { color: #fff; }
+
+/* =========================================================
+   MASTHEAD
+   ========================================================= */
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+.masthead__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.1rem;
+}
+.masthead__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.masthead__logo img {
+  display: block;
+  height: 56px;
+  width: auto;
+}
+/* Typographic wordmark — shown if the hotlinked logo fails to load.
+   Remove once the real asset is exported and hosted locally. */
+.wordmark {
+  font-family: var(--sans);
+  line-height: 1.1;
+}
+.wordmark b {
+  display: block;
+  font-size: 1.22rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.wordmark span {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--lilac);
+}
+
+/* ---------- Nav ---------- */
+.nav__toggle {
+  display: none;
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.9rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+.nav__list {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--sans);
+  font-size: 0.97rem;
+  font-weight: 500;
+}
+.nav__list a {
+  color: var(--ink);
+  text-decoration: none;
+  padding-block: 0.35rem;
+  border-bottom: 2px solid transparent;
+}
+.nav__list a:hover,
+.nav__list a[aria-current="page"] {
+  border-bottom-color: var(--lilac);
+}
+
+@media (max-width: 46rem) {
+  .nav__toggle { display: block; }
+  .nav__list {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem var(--gutter) 1.25rem;
+    z-index: 60;
+  }
+  .nav__list.is-open { display: flex; }
+  .nav__list li { border-top: 1px solid var(--rule); }
+  .nav__list a { display: block; padding: 0.95rem 0; border-bottom: none; }
+  .masthead__inner { position: relative; }
+}
+
+/* =========================================================
+   HERO — no image. Type and space only.
+   ========================================================= */
+.hero { padding-block: clamp(3rem, 8vw, 5.5rem) clamp(2rem, 4vw, 3rem); }
+.hero__lede {
+  font-size: var(--step-3);
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+  margin: 0 0 1.2rem;
+  max-width: 18ch;
+}
+.hero__sub {
+  font-size: var(--step-1);
+  color: var(--ink-soft);
+  max-width: 42ch;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   SIGNATURE — Wave of Light.
+   A slow amber glow behind the entry points, echoing the
+   candle lit at 7pm on 15 October. One accessory only.
+   ========================================================= */
+.paths { position: relative; overflow: hidden; }
+.paths::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120vw;
+  height: 120vw;
+  max-width: 900px;
+  max-height: 900px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle,
+    rgba(199,125,58,0.16) 0%,
+    rgba(199,125,58,0.06) 38%,
+    rgba(199,125,58,0) 68%);
+  animation: waveoflight 9s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes waveoflight {
+  0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(0.94); }
+  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.06); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paths::before { animation: none; opacity: 0.7; }
+}
+.paths .wrap { position: relative; z-index: 1; }
+
+.paths__title {
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--lilac);
+  margin: 0 0 1.5rem;
+}
+
+.pathlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+.pathlist li { border-bottom: 1px solid var(--rule); }
+.pathlist a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 0.25rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: var(--step-2);
+  letter-spacing: -0.015em;
+  transition: padding-left 180ms ease, color 180ms ease;
+}
+.pathlist a:hover {
+  color: var(--lilac);
+  padding-left: 0.9rem;
+}
+.pathlist .arrow {
+  font-family: var(--sans);
+  color: var(--rose);
+  flex: none;
+  font-size: var(--step-1);
+}
+.pathlist .note {
+  display: block;
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  letter-spacing: 0;
+  margin-top: 0.2rem;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   Prose
+   ========================================================= */
+.prose { max-width: var(--measure); margin-inline: auto; }
+.prose > * + * { margin-top: 1.1em; }
+.prose h1, .prose h2, .prose h3 { font-weight: 600; letter-spacing: -0.02em; line-height: 1.22; }
+.prose h1 { font-size: var(--step-3); margin-bottom: 0.5em; }
+.prose h2 { font-size: var(--step-2); margin-top: 2.2em; }
+.prose h3 { font-size: var(--step-1); margin-top: 1.8em; }
+.prose a { color: var(--lilac); text-underline-offset: 3px; }
+.prose a:hover { color: var(--rose); }
+.prose ul, .prose ol { padding-left: 1.2em; }
+.prose li + li { margin-top: 0.4em; }
+
+.pagehead {
+  border-bottom: 1px solid var(--rule);
+  padding-block: clamp(2rem, 5vw, 3.25rem) clamp(1.5rem, 3vw, 2rem);
+}
+.pagehead h1 {
+  font-size: var(--step-3);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 400;
+}
+.pagehead p {
+  margin: 0.75rem 0 0;
+  font-size: var(--step-1);
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+
+/* ---------- Pull quote ---------- */
+.pullquote {
+  border-left: 3px solid var(--rose);
+  padding-left: clamp(1rem, 3vw, 1.75rem);
+  margin: 0;
+  max-width: 40rem;
+}
+.pullquote p {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  margin: 0 0 1em;
+}
+.pullquote p:last-child { margin-bottom: 0; }
+
+/* ---------- Cards ---------- */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+.card {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  background: var(--paper);
+}
+.card h3 { margin: 0 0 0.5rem; font-size: var(--step-1); letter-spacing: -0.015em; }
+.card p { margin: 0 0 0.9rem; font-size: var(--step--1); color: var(--ink-soft); line-height: 1.55; }
+.card a.more {
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--lilac);
+  text-decoration: none;
+}
+.card a.more:hover { text-decoration: underline; }
+
+/* ---------- Section heading ---------- */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--lilac);
+  margin: 0 0 0.8rem;
+}
+.section-title {
+  font-size: var(--step-2);
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+  font-weight: 400;
+}
+
+/* ---------- Pamphlets ---------- */
+.pamphlet {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 1.5rem;
+  padding-block: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.pamphlet:last-child { border-bottom: none; }
+.pamphlet img {
+  width: 100%;
+  aspect-ratio: 250 / 406;
+  object-fit: cover;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  display: block;
+  background: var(--paper-alt);
+  overflow: hidden;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  color: var(--ink-soft);
+  line-height: 1.3;
+}
+.pamphlet h3 { margin: 0 0 0.4rem; font-size: var(--step-1); letter-spacing: -0.015em; }
+.pamphlet p { margin: 0 0 0.8rem; font-size: var(--step--1); color: var(--ink-soft); line-height: 1.55; }
+@media (max-width: 32rem) {
+  .pamphlet { grid-template-columns: 88px 1fr; gap: 1rem; }
+}
+
+/* ---------- Detail list (meeting info) ---------- */
+.details {
+  margin: 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  background: var(--paper-alt);
+  font-family: var(--sans);
+  font-size: var(--step--1);
+}
+.details div { display: flex; gap: 0.75rem; padding-block: 0.4rem; }
+.details div + div { border-top: 1px solid var(--rule); }
+.details dt { font-weight: 600; flex: 0 0 5.5rem; color: var(--ink-soft); }
+.details dd { margin: 0; }
+
+/* ---------- Draft flag ---------- */
+.draft {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8A5A00;
+  background: #FFF3DC;
+  border: 1px solid #E8C88A;
+  border-radius: 2px;
+  padding: 0.1rem 0.4rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+.draftnote {
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  background: #FFF3DC;
+  border-left: 3px solid #E8C88A;
+  padding: 1rem 1.25rem;
+  margin: 2rem 0;
+  color: #6B4A10;
+  line-height: 1.55;
+}
+.draftnote strong { color: #4A3308; }
+
+/* ---------- Professionals strip ---------- */
+.pro {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  background: var(--paper-alt);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.pro h2 { margin: 0 0 0.3rem; font-size: var(--step-1); letter-spacing: -0.015em; font-weight: 600; }
+.pro p { margin: 0; font-size: var(--step--1); color: var(--ink-soft); max-width: 42ch; }
+.btn {
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 0.7rem 1.15rem;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+.btn:hover { background: var(--ink); color: #fff; }
+
+/* ---------- Figure ---------- */
+figure { margin: 2rem 0; }
+figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  background: var(--paper-alt);
+}
+figcaption {
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  margin-top: 0.6rem;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.foot {
+  background: var(--ink);
+  color: #C9C5D8;
+  font-family: var(--sans);
+  font-size: var(--step--1);
+  padding-block: 3rem 2rem;
+  margin-top: 4rem;
+}
+.foot a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+.foot a:hover { border-bottom-color: var(--amber); color: var(--amber); }
+.foot__grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.foot h2 {
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #A5A0BC;
+  margin: 0 0 0.9rem;
+  font-weight: 600;
+}
+.foot ul { list-style: none; margin: 0; padding: 0; }
+.foot li + li { margin-top: 0.5rem; }
+.foot__legal {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  justify-content: space-between;
+  color: #A5A0BC;
+  line-height: 1.6;
+}
+.foot__tel {
+  font-size: var(--step-1);
+  font-weight: 700;
+  color: #fff !important;
+  border-bottom: 2px solid var(--amber) !important;
+}
+.exit {
+  font-size: 0.78rem;
+  color: #A5A0BC !important;
+  border: none !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

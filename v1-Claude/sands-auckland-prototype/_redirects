@@ -1,0 +1,29 @@
+# Old WordPress URLs -> new static pages.
+# Inbound links from hospitals, midwives, Facebook posts and the Sands NZ
+# site point at these. None of them may break. 301 = permanent.
+
+/about                                    /about.html                  301
+/about/about-the-organisation             /organisation.html           301
+/about/donate                             /donate.html                 301
+
+/support                                  /support.html                301
+/support/sands-support-packs              /support.html#packs          301
+/support/support-group                    /support.html#group          301
+/support/phone-support                    /support.html#phone          301
+/support/online-support                   /support.html#online         301
+/support/other-support                    /other-support.html          301
+
+/events                                   /events.html                 301
+/events/baby-loss-awareness-week          /events.html#blaw            301
+/events/sands-nz-national-conference      /events.html#conference      301
+/events/training-days                     /events.html#training        301
+
+/resources                                /resources.html              301
+/resources/wheturangitia                  /resources.html              301
+/resources/magazine                       /magazine.html               301
+/resources/online-resources               /online-resources.html       301
+/resources/nz-books                       /nz-books.html               301
+/resources/library-books                  /library-books.html          301
+/resources/info-for-health-professionals  /health-professionals.html   301
+
+/contact                                  /contact.html                301
