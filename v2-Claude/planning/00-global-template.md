@@ -33,6 +33,8 @@ Max-width limited, centred. (Exact max-width tbc in design-system pass — conte
 ### A4. Body block
 - This is where each individual page's own layout goes (specced in that page's own brief).
 - For any Support Level-2 page (`support/contact`, `support/group`, etc.), the body uses a shared **L2 sub-template** — see `02b-support-l2-subtemplate.md` (separate brief, to be written once we've done one concrete example) — rather than each L2 page inventing its own structure from scratch.
+- **Standing pattern — in-page jump-to nav:** any page with roughly 4–5+ distinct sections/destinations gets a short in-page anchor nav near the top of the body, styled as equal-weight links with no visual ranking (same treatment as `orientation/my-baby-died`'s anchor nav and `support/index`'s section jump-to). Applies by default going forward — individual page briefs don't need to re-justify adding one, only note where the anchors point.
+
 
 ### A5. Footer
 Shared, identical across every page including Home. See section B below.
