@@ -266,6 +266,105 @@ a:hover { color: var(--terracotta-700); }
   box-shadow: 0 2px 8px rgba(34,32,42,0.08); margin-bottom: var(--space-2);
 }
 .card .btn { align-self: flex-start; margin-top: var(--space-2); }
+
+/* ---- Group directory cards (full-width, two-column) ----------------- */
+/* Cards stack vertically. Inside each card: main (left) + contact (right)
+   sit side-by-side from ~640px; below that contact wraps under main. */
+.grouplist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-6);
+}
+.groupcard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+}
+.groupcard__main {
+  flex: 1 1 16rem;
+  min-width: min(100%, 16rem);
+}
+.groupcard__contact {
+  flex: 1 1 12rem;
+  min-width: min(100%, 12rem);
+  padding-top: var(--space-1);
+}
+@media (min-width: 640px) {
+  .groupcard__contact {
+    border-left: 1px solid var(--rule);
+    padding-left: var(--space-5);
+    padding-top: 0;
+    max-width: 20rem;
+  }
+}
+.groupcard__name {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  color: var(--violet-800);
+  line-height: 1.25;
+}
+.groupcard__people {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.groupcard__desc {
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+}
+.groupcard__meetings {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+.groupcard__meetings strong {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--violet-700);
+  margin-bottom: var(--space-1);
+}
+.groupcard__contact-label {
+  margin: 0 0 var(--space-2);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--violet-700);
+}
+.groupcard__channels {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+.groupcard__channels li {
+  margin: 0;
+  line-height: 1.45;
+  word-break: break-word;
+}
+.groupcard__channels .ch-label {
+  display: block;
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 1px;
+}
+
 /* inline cover floated within prose (e.g. Support newsletter block) */
 .cover-inline {
   float: right; height: 180px; width: auto;

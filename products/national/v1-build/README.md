@@ -24,7 +24,7 @@ Open <http://localhost:8124/> (use a different port if Auckland v3 is already on
 | ID | What | Where |
 |---|---|---|
 | **N1** | Find a local group | `support/find-a-group.html` + Support index block |
-| **N2** | NZ Board (sub-page of About) | `orientation/board.html` ← linked from About |
+| **N2** | NZ Board (sub-page of About) | `support-our-work/board.html` ← linked from About |
 | **N3** | National conference elevated | `whats-on/index.html` `#conference` |
 | **N5** | BLAW / Wave / Light Up Aotearoa elevated | `whats-on/index.html` `#blaw` `#wave` `#lightup` |
 | **N4** | Volunteer training | `support-our-work/training.html` |
