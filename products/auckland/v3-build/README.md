@@ -8,9 +8,10 @@ A complete draft of the site (16 pages) built against the design system
 ## Run it
 
 ```bash
-cd v3-build
+cd products/auckland/v3-build
 python3 -m http.server 8123
 ```
+
 
 Then open <http://localhost:8123/>. Pages use root-relative paths, so they need a server root
 (opening the files directly with `file://` won't resolve CSS/links).

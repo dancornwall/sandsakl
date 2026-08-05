@@ -1,8 +1,8 @@
 # v2 planning docs
 
 The current design + IA effort for the Sands Auckland Central rebuild. **Planning only — no
-HTML is built yet.** Project overview: [../../README.md](../../README.md). Status & to-dos:
-[../../ROADMAP.md](../../ROADMAP.md).
+HTML is built yet.** Product overview: [../../README.md](../../README.md). Status & to-dos:
+[../../ROADMAP.md](../../ROADMAP.md). Workspace: [../../../README.md](../../../README.md).
 
 ## Reading order
 

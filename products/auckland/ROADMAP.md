@@ -1,7 +1,8 @@
 # Roadmap & status
 
 Living tracker for the Sands Auckland Central rebuild. Update the checkboxes as work lands.
-Project overview is in [README.md](README.md); the planning docs are indexed in
+Product overview is in [README.md](README.md); workspace overview is in
+[../../README.md](../../README.md). Planning docs are indexed in
 [v2-Claude/planning/README.md](v2-Claude/planning/README.md).
 
 _Last updated: 2026-08-05._
@@ -24,7 +25,7 @@ _Last updated: 2026-08-05._
 
 > **Where the real build lives:** [`v3-build/`](v3-build/README.md) now holds a complete draft of
 > every page (Home, the 5 Orientation pages, 4 Support pages, What's On, Support Our Work, For Health
-> Professionals, Accessibility, Privacy). Run it with `cd v3-build && python3 -m http.server 8123`.
+> Professionals, Accessibility, Privacy). Run it with `cd products/auckland/v3-build && python3 -m http.server 8123`.
 > Still draft: unreviewed copy (flagged in-page), placeholder "top 3" picks, 2025 example dates on
 > What's On, Google-hosted fonts, and hero/illustration art. See the build README for the full list.
 
