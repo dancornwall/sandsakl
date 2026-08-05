@@ -18,9 +18,15 @@ _Last updated: 2026-08-05._
 | 3. Design system | `sands_design_system_v1_4.md` (tokens, type, tone) | ✅ Done |
 | 4. Per-page layout briefs | `00`–`07` layout specs | 🟡 In progress (core pages done; see below) |
 | 5. Copy drafting + DRAFT review | Write/finalise page copy; dual bereaved-parent review | ⬜ Not started |
-| 6. Moodboard → Claude Design | Coded layouts against the tokens | ⬜ Not started |
-| 7. Build (Claude Code) | Static HTML/CSS/JS from tokens + briefs | ⬜ Not started |
+| 6. Moodboard → Claude Design | Coded layouts against the tokens | ➖ Folded into Phase 7 (built directly against tokens) |
+| 7. Build (Claude Code) | Static HTML/CSS/JS from tokens + briefs | 🟡 **Full draft site in [`v3-build/`](v3-build/README.md)** — all 16 pages, for review |
 | 8. Launch prep | Redirects, hosting, accessibility audit, go-live | ⬜ Not started |
+
+> **Where the real build lives:** [`v3-build/`](v3-build/README.md) now holds a complete draft of
+> every page (Home, the 5 Orientation pages, 4 Support pages, What's On, Support Our Work, For Health
+> Professionals, Accessibility, Privacy). Run it with `cd v3-build && python3 -m http.server 8123`.
+> Still draft: unreviewed copy (flagged in-page), placeholder "top 3" picks, 2025 example dates on
+> What's On, Google-hosted fonts, and hero/illustration art. See the build README for the full list.
 
 ---
 

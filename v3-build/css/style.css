@@ -1,0 +1,428 @@
+/* =========================================================================
+   Sands Auckland Central — vertical-slice stylesheet
+   Implements sands_design_system_v1_4.md tokens (§10) + the components the
+   five slice pages need. This is a DRAFT build for design-system audit.
+   ========================================================================= */
+
+/* ---- Tokens (design system §10) -------------------------------------- */
+:root {
+  /* Violet — primary */
+  --violet-100: #EDE9F5;
+  --violet-300: #b19aca;
+  --violet-500: #6652a4;
+  --violet-700: #472f92;   /* brand primary */
+  --violet-800: #3A2678;   /* sombre option */
+  --violet-900: #2E1F5E;
+
+  /* Terracotta — accent (rationed to actions) */
+  --terracotta-100: #FBE9DE;
+  --terracotta-400: #f37021;  /* brand hex — fills/large only, never text */
+  --terracotta-500: #e5976a;  /* brand hex — fills/large only, never text */
+  --terracotta-700: #B85A2E;  /* large/bold text only */
+  --terracotta-800: #A64F28;  /* text-safe: links, CTA text */
+
+  /* Neutrals */
+  --ink: #22202A;
+  --ink-soft: #5B5766;
+  --paper: #FBFAF8;
+  --paper-alt: #F3F0EC;
+  --rule: #DFDAD3;
+
+  /* Functional */
+  --crisis: #B8433B;
+  --focus: var(--violet-700);
+  --focus-width: 3px;
+  --focus-offset: 2px;
+
+  /* Type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", sans-serif;
+  --text-sm: 0.875rem;   /* 14 */
+  --text-base: 1rem;     /* 16 */
+  --text-lg: 1.25rem;    /* 20 */
+  --text-xl: 1.75rem;    /* 28 */
+  --text-2xl: 2.5rem;    /* 40 */
+  --text-3xl: 3.5rem;    /* 56 */
+
+  /* Spacing (4-based) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px;
+  --space-4: 24px; --space-5: 32px; --space-6: 48px;
+  --space-7: 64px; --space-8: 96px; --space-9: 128px;
+
+  /* Layout */
+  --gutter: 24px;
+  --container-max: 1152px;
+  --measure: 42rem;
+  --radius: 10px;
+}
+
+@media (min-width: 768px) { :root { --gutter: 32px; } }
+
+/* ---- Reset / base ---------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; color: var(--violet-700); margin: 0 0 var(--space-3); }
+h1 { font-size: var(--text-2xl); }
+h2 { font-size: var(--text-xl); }
+h3 { font-size: var(--text-lg); color: var(--violet-800); }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--terracotta-800); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--terracotta-700); }
+
+@media (min-width: 768px) {
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+  h3 { font-size: var(--text-xl); }
+}
+
+/* Visible keyboard focus everywhere (quality floor) */
+:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+  border-radius: 2px;
+}
+
+/* Reduced motion respected globally (§5) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---- Layout helpers -------------------------------------------------- */
+.wrap {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.prose { max-width: var(--measure); }
+/* in-flow H2s (several within one continuous body) get natural space above,
+   instead of a separator line — keeps a page reading as one piece */
+.prose h2:not(:first-child) { margin-top: var(--space-8); }
+/* H3 subheadings get a clear (smaller) top gap so they don't crowd the block
+   above them — base rule only gives them a bottom margin */
+.prose h3 { margin-top: var(--space-5); }
+.prose h3:first-child { margin-top: 0; }
+.section { padding-block: var(--space-6); }
+@media (min-width: 768px) { .section { padding-block: var(--space-7); } }
+.section--alt { background: var(--paper-alt); }
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--violet-700); color: #fff; padding: var(--space-3);
+  z-index: 100;
+}
+.skip:focus { left: 0; color: #fff; }
+
+.eyebrow {
+  font-size: var(--text-sm); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-soft); font-weight: 600; margin-bottom: var(--space-2);
+}
+
+/* ---- Buttons / links ------------------------------------------------- */
+.btn {
+  display: inline-block;
+  font-weight: 600; font-size: var(--text-base);
+  padding: 12px var(--space-4);
+  border-radius: var(--radius);
+  text-decoration: none;
+  min-height: 44px;
+}
+.btn--primary { background: var(--violet-700); color: #fff; }
+.btn--primary:hover { background: var(--violet-800); color: #fff; }
+/* terracotta CTA: fill uses brand hex, label stays text-safe by being large/bold on fill */
+.btn--cta { background: var(--terracotta-500); color: #2b1206; }
+.btn--cta:hover { background: var(--terracotta-400); color: #2b1206; }
+.arrow-link { font-weight: 600; text-decoration: none; }
+.arrow-link::after { content: " \2192"; }
+
+/* ---- Masthead (shared header, every page incl. Home) ----------------- */
+.masthead { border-bottom: 1px solid var(--rule); position: relative; }
+.masthead__inner {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-4); padding-block: var(--space-4);
+}
+.logo { display: inline-block; line-height: 0; }
+.logo img { height: 52px; width: auto; display: block; }
+
+/* right column: demoted "For health professionals" tertiary link, then nav */
+.masthead__right { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-3); }
+.prolink {
+  font-size: var(--text-sm); font-weight: 600; color: var(--ink-soft);
+  text-decoration: none; line-height: 1;
+}
+.prolink:hover { color: var(--violet-700); text-decoration: underline; text-underline-offset: 2px; }
+.prolink[aria-current="page"] { color: var(--violet-700); text-decoration: underline; }
+
+.nav__toggle {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: none; border: 1px solid var(--rule); border-radius: var(--radius);
+  font: inherit; font-weight: 600; color: var(--violet-700);
+  padding: 10px var(--space-3); min-height: 44px; cursor: pointer;
+}
+.nav__list {
+  list-style: none; display: flex; align-items: center; gap: var(--space-4);
+  margin: 0; padding: 0;
+}
+.nav__list { flex-wrap: nowrap; }
+.nav__list li { flex: 0 0 auto; }
+.nav__list a {
+  color: var(--ink); text-decoration: none; font-weight: 600; font-size: var(--text-base);
+  padding: var(--space-2) 0; white-space: nowrap;
+}
+/* .nav__list a (0,1,1) would otherwise override .btn--primary's white (0,1,0),
+   rendering the CTA label ink-on-violet (~1.9:1, fails AA). Restore white here. */
+.nav__list a.btn { padding: 10px var(--space-4); }
+.nav__list a.btn--primary,
+.nav__list a.btn--primary:hover { color: #fff; }
+.nav__list a:hover { color: var(--violet-700); }
+/* active state for plain text links — must NOT recolour the CTA button,
+   whose fill is already violet-700 (would make the label violet-on-violet) */
+.nav__list a[aria-current="page"]:not(.btn) {
+  color: var(--violet-700); box-shadow: inset 0 -3px 0 var(--terracotta-500);
+}
+/* active state for the CTA button: darker fill + terracotta ring, label stays white */
+.nav__list .btn--primary[aria-current="page"] {
+  background: var(--violet-800); color: #fff;
+  box-shadow: inset 0 0 0 2px var(--terracotta-500);
+}
+
+@media (max-width: 767px) {
+  .nav__list {
+    display: none; position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--paper); border-bottom: 1px solid var(--rule); z-index: 30;
+    padding: var(--space-2) var(--gutter) var(--space-4);
+    box-shadow: 0 8px 16px rgba(34,32,42,0.08);
+  }
+  .nav__list.is-open { display: flex; }
+  .nav__list li { border-top: 1px solid var(--rule); }
+  .nav__list a { display: block; padding: var(--space-3) 0; }
+  .nav__list .btn { text-align: center; margin-top: var(--space-3); }
+}
+@media (min-width: 768px) {
+  .nav__toggle { display: none; }
+}
+
+/* ---- Home: hero block (contained to the content container) ----------- */
+.hero { padding-top: var(--space-5); }
+.hero__inner {
+  /* .hero__inner is also .wrap (max-width container-max, centred) */
+  color: #fff;
+  /* PLACEHOLDER background — real full-bleed-within-container asset drops in later */
+  background: radial-gradient(120% 120% at 72% 8%, var(--violet-500), var(--violet-900));
+  border-radius: var(--radius);
+  padding-block: var(--space-8);
+  min-height: 44vh;
+  display: flex; align-items: center;
+}
+.hero__panel {
+  max-width: 34rem;
+  border-left: 4px solid var(--terracotta-500);
+  padding-left: var(--space-5);
+}
+.hero__lede { color: #fff; font-size: var(--text-2xl); margin-bottom: var(--space-3); }
+.hero__sub { color: rgba(255,255,255,0.92); font-size: var(--text-lg); margin-bottom: var(--space-4); }
+@media (min-width: 768px) { .hero__lede { font-size: var(--text-3xl); } }
+@media (max-width: 767px) {
+  .hero__inner { padding-block: var(--space-6); min-height: 0; }
+  .hero__panel { max-width: none; }
+}
+
+/* ---- Cards ----------------------------------------------------------- */
+.cardgrid {
+  display: grid; gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.card {
+  background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2);
+}
+.card h3 { margin: 0; }
+.card p { margin: 0; color: var(--ink); }
+.card .arrow-link { margin-top: auto; padding-top: var(--space-2); }
+/* media card — small cover image beside text (e.g. newsletter teaser) */
+.card--media { flex-direction: row; align-items: flex-start; gap: var(--space-3); }
+.card__cover {
+  flex: 0 0 auto; height: 104px; width: auto;
+  border-radius: 4px; border: 1px solid var(--rule);
+  box-shadow: 0 2px 8px rgba(34,32,42,0.08);
+}
+.card--media h3 { margin-bottom: var(--space-1); }
+.card--media p { margin-bottom: var(--space-2); }
+/* cover image sitting at the top of a card (brochures / books full pages) */
+.card__img {
+  align-self: center; height: 220px; width: auto; max-width: 100%;
+  border-radius: 4px; border: 1px solid var(--rule);
+  box-shadow: 0 2px 8px rgba(34,32,42,0.08); margin-bottom: var(--space-2);
+}
+.card .btn { align-self: flex-start; margin-top: var(--space-2); }
+/* inline cover floated within prose (e.g. Support newsletter block) */
+.cover-inline {
+  float: right; height: 180px; width: auto;
+  margin: 0 0 var(--space-3) var(--space-4);
+  border-radius: 4px; border: 1px solid var(--rule);
+  box-shadow: 0 2px 8px rgba(34,32,42,0.08);
+}
+@media (max-width: 559px) { .cover-inline { float: none; display: block; margin: 0 0 var(--space-3); } }
+
+/* ---- Pull quote / welcome ------------------------------------------- */
+.pullquote {
+  border-left: 3px solid var(--violet-300); margin: 0; padding-left: var(--space-4);
+  font-size: var(--text-lg); color: var(--ink);
+}
+.pullquote p:last-child { margin-bottom: 0; }
+
+/* ---- DRAFT + placeholder flags -------------------------------------- */
+.flag {
+  display: inline-block; font-size: var(--text-sm); font-weight: 700;
+  padding: 1px var(--space-2); border-radius: 4px; letter-spacing: 0.03em;
+  background: var(--terracotta-100); color: var(--terracotta-800);
+  border: 1px dashed var(--terracotta-700); vertical-align: middle;
+}
+.callout--draft {
+  background: var(--terracotta-100); border: 1px dashed var(--terracotta-700);
+  border-radius: var(--radius); padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm); color: var(--terracotta-800);
+}
+.placeholder {
+  background: repeating-linear-gradient(45deg, var(--paper-alt), var(--paper-alt) 10px, #ece7e0 10px, #ece7e0 20px);
+  border: 1px dashed var(--rule); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  color: var(--ink-soft); font-size: var(--text-sm); padding: var(--space-4);
+  min-height: 120px;
+}
+
+/* ---- Jump-to / anchor nav ------------------------------------------- */
+.jumpnav { border-block: 1px solid var(--rule); padding-block: var(--space-4); }
+.jumpnav__inner { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3) var(--space-6); }
+.jumpnav__label {
+  font-size: var(--text-sm); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-soft); font-weight: 600; flex: 0 0 auto;
+}
+.jumpnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
+.jumpnav a { font-weight: 600; text-decoration: none; }
+.jumpnav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+:target { scroll-margin-top: var(--space-4); }
+
+/* ---- Orientation index: 70/30 --------------------------------------- */
+.split { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
+@media (min-width: 900px) { .split { grid-template-columns: 7fr 3fr; gap: var(--space-7); } }
+
+.destrow {
+  display: grid; grid-template-columns: 96px 1fr auto; gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4) 0; border-top: 1px solid var(--rule);
+}
+.destrow:last-child { border-bottom: 1px solid var(--rule); }
+.destrow h2 { margin: 0 0 var(--space-1); font-size: var(--text-xl); }
+.destrow p { margin: 0; color: var(--ink); }
+.destrow__illus {
+  width: 96px; height: 96px; border-radius: var(--radius);
+  background: var(--violet-100); border: 1px dashed var(--violet-300);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--violet-500); font-size: 11px; text-align: center; padding: 6px;
+}
+.destrow__go { align-self: center; }
+@media (max-width: 559px) {
+  .destrow { grid-template-columns: 1fr; }
+  .destrow__illus { display: none; }
+}
+
+.aboutcard {
+  background: var(--violet-100); border-radius: var(--radius); padding: var(--space-4);
+}
+.aboutcard h2 { font-size: var(--text-xl); }
+.sidequote {
+  margin-top: var(--space-4); padding-left: var(--space-3);
+  border-left: 3px solid var(--violet-300); font-style: italic; color: var(--ink);
+}
+
+/* ---- Support blocks -------------------------------------------------- */
+/* No separator lines — sections are spaced by top margin instead (matches
+   the continuous feel of orientation/my-baby-died). */
+.block { padding-block-start: var(--space-8); }
+.block:first-of-type { padding-block-start: var(--space-6); }
+
+.standout {
+  background: var(--violet-100); border-radius: var(--radius);
+  padding: var(--space-4); margin-block: var(--space-4);
+}
+/* inside a card the flex gap handles spacing — don't double it up */
+.card .standout { margin-block: 0; }
+.standout dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: var(--space-1) var(--space-3); }
+.standout dt { font-weight: 700; color: var(--violet-800); }
+.standout dd { margin: 0; }
+
+/* crisis lines — semantic, visually secondary to Sands' own channel */
+.crisis {
+  margin-top: var(--space-4); border: 1px solid var(--rule);
+  border-left: 4px solid var(--crisis); border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4); background: var(--paper);
+}
+.crisis h3 { color: var(--crisis); font-size: var(--text-base); font-family: var(--font-body); font-weight: 700; margin-bottom: var(--space-2); }
+.crisis ul { list-style: none; margin: 0; padding: 0; }
+.crisis li { display: flex; justify-content: space-between; gap: var(--space-3); padding: var(--space-1) 0; border-top: 1px dotted var(--rule); }
+.crisis li:first-child { border-top: 0; }
+.crisis .num { font-weight: 700; white-space: nowrap; }
+
+.thumbrow { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 559px) { .thumbrow { grid-template-columns: 1fr; } }
+.thumb { text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
+.thumb a { display: block; }
+.thumb img {
+  height: 200px; width: auto; max-width: 100%;
+  border-radius: 4px; border: 1px solid var(--rule);
+  box-shadow: 0 2px 8px rgba(34,32,42,0.08);
+}
+.thumb .caption { font-size: var(--text-sm); font-weight: 600; color: var(--ink); }
+.thumb .placeholder { min-height: 160px; margin-bottom: var(--space-2); }
+
+.linklist { list-style: none; margin: 0; padding: 0; }
+.linklist li { padding: var(--space-2) 0; border-top: 1px solid var(--rule); }
+.linklist li:first-child { border-top: 0; }
+.linklist .lead { font-weight: 600; }
+
+.backlink { margin-top: var(--space-6); }
+
+/* ---- Contextual callout (low-placement give/belong) ------------------ */
+.softcta {
+  margin-top: var(--space-6); background: var(--paper-alt);
+  border-radius: var(--radius); padding: var(--space-4);
+  font-size: var(--text-sm); color: var(--ink-soft);
+}
+
+/* ---- Footer ---------------------------------------------------------- */
+.foot { background: var(--violet-900); color: #E9E4F2; margin-top: var(--space-8); }
+.foot a { color: #fff; }
+.foot__top {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4);
+  align-items: center; padding-block: var(--space-5); border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.foot__brand b { font-family: var(--font-display); font-size: var(--text-lg); color: #fff; display: block; }
+.foot__brand span { color: #C9BFE0; font-size: var(--text-sm); }
+.foot__tel { font-size: var(--text-lg); font-weight: 700; text-decoration: none; }
+.foot__map {
+  display: grid; gap: var(--space-5); padding-block: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.foot__map h2 { color: #fff; font-family: var(--font-body); font-size: var(--text-base); font-weight: 700; margin-bottom: var(--space-3); }
+.foot__map ul { list-style: none; margin: 0; padding: 0; }
+.foot__map li { padding: var(--space-1) 0; }
+.foot__map a { color: #D8D0EA; text-decoration: none; font-size: var(--text-sm); }
+.foot__map a:hover { color: #fff; text-decoration: underline; }
+.foot__legal {
+  display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4);
+  padding-block: var(--space-4); border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: var(--text-sm); color: #C9BFE0;
+}
+.foot__legal a { color: #D8D0EA; }
