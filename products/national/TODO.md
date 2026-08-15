@@ -1,9 +1,9 @@
 # National site — open follow-ups
 
 **Product:** `products/national/v1-build/` (sands.org.nz rebuild)  
-**Source:** Tania Cornwall emails, 14–15 Aug 2026  
+**Source:** Tania Cornwall emails, 14–16 Aug 2026  
 **Live preview:** https://sandsakl.dan-957.workers.dev/  
-**Last copy pass:** commit `7194762` (Apply Tania Cornwall copy to National build)
+**Last copy pass:** 16 Aug 2026 (home body copy + doorway card; privacy Information you give us / This website)
 
 Copy Tania supplied is on the site. Items below still need an asset, a URL, a decision, or a non-copy change. Do not invent missing PDFs, photos, or Facebook/meeting links.
 
@@ -29,8 +29,8 @@ Copy Tania supplied is on the site. Items below still need an asset, a URL, a de
 
 Not open work. Listed so the next person does not redo them.
 
-- Home banner text, three doorway cards, four body paragraphs, From around Sands cards, nav label “My baby has died” / subtitle “You are not alone”, orange button → About Sands
-- Privacy: “Information you give us”, “This website”, Expressions section removed, charity number CC30352 in footers
+- Home banner text, three doorway cards (doorway card now “My baby has died”, not “My baby has died / will die”), four body paragraphs (rewritten 16 Aug), From around Sands cards, nav label “My baby has died” / subtitle “You are not alone”, orange button → About Sands
+- Privacy: “Information you give us” (phone, email, or message), “This website” (Whetūrangitia or crisis lines), Expressions section removed, charity number CC30352 in footers
 - Start Here page retitled **You are not alone**, card copy, new **My pregnancy ended for medical reasons** card + page
 - **My baby has died** full page copy (booklet link still placeholder)
 - **My baby died a long time ago** full page copy + bottom cards
