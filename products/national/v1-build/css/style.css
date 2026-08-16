@@ -152,7 +152,7 @@ a:hover { color: var(--terracotta-700); }
   gap: var(--space-4); padding-block: var(--space-4);
 }
 .logo { display: inline-block; line-height: 0; }
-.logo img { width: 318px; height: 90px; display: block; }
+.logo img { width: 270px; height: auto; display: block; }
 
 /* right column: demoted "For health professionals" tertiary link, then nav */
 .masthead__right { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-3); }
@@ -179,25 +179,27 @@ a:hover { color: var(--terracotta-700); }
   color: var(--ink); text-decoration: none; font-weight: 600; font-size: var(--text-base);
   padding: var(--space-2) 0; white-space: nowrap;
 }
-/* .nav__list a (0,1,1) would otherwise override .btn--primary's white (0,1,0),
-   rendering the CTA label ink-on-violet (~1.9:1, fails AA). Restore white here. */
-.nav__list a.btn { padding: 10px var(--space-4); }
-.nav__list a.btn--primary,
-.nav__list a.btn--primary:hover { color: #fff; }
+/* Contact us is button-like on desktop and becomes a standard menu row below. */
+.nav__prolink-mobile { display: none; }
+.nav__list .nav__contact {
+  display: inline-block; min-height: 44px; padding: 10px var(--space-4);
+  border-radius: var(--radius); background: var(--violet-700); color: #fff;
+}
+.nav__list .nav__contact:hover { background: var(--violet-800); color: #fff; }
 .nav__list a:hover { color: var(--violet-700); }
-/* active state for plain text links — must NOT recolour the CTA button,
-   whose fill is already violet-700 (would make the label violet-on-violet) */
-.nav__list a[aria-current="page"]:not(.btn) {
+/* Plain-link active state excludes the desktop Contact us treatment. */
+.nav__list a[aria-current="page"]:not(.nav__contact) {
   color: var(--violet-700); box-shadow: inset 0 -3px 0 var(--terracotta-500);
 }
-/* active state for the CTA button: darker fill + terracotta ring, label stays white */
-.nav__list .btn--primary[aria-current="page"] {
+/* Desktop Contact us active state. */
+.nav__list .nav__contact[aria-current="page"] {
   background: var(--violet-800); color: #fff;
   box-shadow: inset 0 0 0 2px var(--terracotta-500);
 }
 
 @media (max-width: 1023px) {
-  .logo img { width: min(318px, calc(100vw - 136px)); height: auto; }
+  .logo img { width: min(270px, calc(100vw - 136px)); height: auto; }
+  .masthead__right > .prolink { display: none; }
   .nav__list {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
     flex-direction: column; align-items: stretch; gap: 0;
@@ -208,7 +210,16 @@ a:hover { color: var(--terracotta-700); }
   .nav__list.is-open { display: flex; }
   .nav__list li { border-top: 1px solid var(--rule); }
   .nav__list a { display: block; padding: var(--space-3) 0; }
-  .nav__list .btn { text-align: center; margin-top: var(--space-3); }
+  .nav__prolink-mobile { display: block; }
+  .nav__list .nav__contact,
+  .nav__list .nav__contact:hover {
+    min-height: 0; padding: var(--space-3) 0; border-radius: 0;
+    background: transparent; color: var(--ink); box-shadow: none;
+  }
+  .nav__list .nav__contact[aria-current="page"] {
+    background: transparent; color: var(--violet-700);
+    box-shadow: inset 0 -3px 0 var(--terracotta-500);
+  }
 }
 @media (min-width: 1024px) {
   .nav__toggle { display: none; }
@@ -449,7 +460,7 @@ a:hover { color: var(--terracotta-700); }
 
 /* ---- Support blocks -------------------------------------------------- */
 /* No separator lines — sections are spaced by top margin instead (matches
-   the continuous feel of orientation/my-baby-died). */
+   the continuous feel of baby-loss/my-baby-died). */
 .block { padding-block-start: var(--space-8); }
 .block:first-of-type { padding-block-start: var(--space-6); }
 

@@ -14,9 +14,9 @@ Copy Tania supplied is on the site. Items below still need an asset, a URL, a de
 - [ ] **Home hero image.** Purple banner needs an image on the right. Tania is still choosing it. File: `index.html`.
 - [ ] **Sands NZ logo, larger / more prominent** in the header. Waiting on a national logo file if it differs from the current mark. Sitewide header.
 - [ ] **Booklet PDF: *A little life, not a little loss*.** Placeholder `[Link to booklet]` on:
-  - `orientation/my-baby-died.html`
-  - `orientation/medical-reasons.html`
-- [ ] **Pregnancy After Loss Support Group** card on `orientation/pregnant-again.html`. Needs the group URL.
+  - `baby-loss/my-baby-died.html`
+  - `baby-loss/medical-reasons.html`
+- [ ] **Pregnancy After Loss Support Group** card on `baby-loss/pregnant-again.html`. Needs the group URL.
 
 ## Questions Tania raised (need a decision)
 
