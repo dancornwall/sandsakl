@@ -152,7 +152,7 @@ a:hover { color: var(--terracotta-700); }
   gap: var(--space-4); padding-block: var(--space-4);
 }
 .logo { display: inline-block; line-height: 0; }
-.logo img { width: 124px; height: 109px; display: block; }
+.logo img { width: 318px; height: 90px; display: block; }
 
 /* right column: demoted "For health professionals" tertiary link, then nav */
 .masthead__right { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-3); }
@@ -196,7 +196,8 @@ a:hover { color: var(--terracotta-700); }
   box-shadow: inset 0 0 0 2px var(--terracotta-500);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
+  .logo img { width: min(318px, calc(100vw - 136px)); height: auto; }
   .nav__list {
     display: none; position: absolute; left: 0; right: 0; top: 100%;
     flex-direction: column; align-items: stretch; gap: 0;
@@ -209,7 +210,7 @@ a:hover { color: var(--terracotta-700); }
   .nav__list a { display: block; padding: var(--space-3) 0; }
   .nav__list .btn { text-align: center; margin-top: var(--space-3); }
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .nav__toggle { display: none; }
 }
 
