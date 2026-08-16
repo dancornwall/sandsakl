@@ -4,7 +4,7 @@
 |---|---|
 | **Compared** | Live sands.org.nz pamphlet page + national “news” book posts vs `products/national/v1-build` (cloned from Auckland v3) |
 | **Date** | 2026-08-05 |
-| **v1 home** | Brochures: `v1-build/support/brochures.html` · Books: `v1-build/support/reading.html` · CoL: `v1-build/support/certificate-of-life.html` |
+| **v1 home** | Resources: `v1-build/support/resources.html` · Books: `v1-build/support/reading.html` · CoL: `v1-build/support/resources.html#certificate-of-life` |
 
 ---
 
