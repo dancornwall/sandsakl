@@ -117,59 +117,86 @@
 <footer class="foot">
   <div class="wrap">
     <div class="foot__top">
-      <div class="foot__brand">
-        <b>Sands New Zealand</b>
-        <span>A little life, not a little loss.</span>
-      </div>
+      <a class="foot__brand" href="/" aria-label="Sands New Zealand home">
+        <img src="/images/sands-logo-long-white-sml.png" alt="Sands New Zealand" width="315" height="80">
+      </a>
       <a class="foot__tel" href="/support/find-a-group.html">Find a local group</a>
     </div>
+
     <div class="foot__map">
-      <div>        <h2>My baby has died</h2>
-        <ul>
+      <div class="foot__column">
+        <h2>
+          <button class="foot__toggle" type="button" aria-expanded="true" aria-controls="foot-loss-links">
+            <span>When a baby dies</span><span class="foot__chevron" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <ul id="foot-loss-links">
           <li><a href="/baby-loss/">You are not alone</a></li>
           <li><a href="/baby-loss/my-baby-died.html">My baby has died</a></li>
-          <li><a href="/baby-loss/medical-reasons.html">Medical reasons</a></li>
-          <li><a href="/baby-loss/loss-long-ago.html">A long time ago</a></li>
-          <li><a href="/baby-loss/pregnant-again.html">Pregnant after loss</a></li>
-          <li><a href="/baby-loss/someone-i-love.html">Someone I love</a></li>
+          <li><a href="/baby-loss/medical-reasons.html">My pregnancy ended for medical reasons</a></li>
+          <li><a href="/baby-loss/loss-long-ago.html">My baby died a long time ago</a></li>
+          <li><a href="/baby-loss/pregnant-again.html">I'm pregnant after loss</a></li>
+          <li><a href="/baby-loss/someone-i-love.html">Someone I love has lost a baby</a></li>
         </ul>
       </div>
-      <div>
-        <h2>Support</h2>
-        <ul>
-          <li><a href="/support/find-a-group.html">Find a local group</a></li>
+      <div class="foot__column">
+        <h2>
+          <button class="foot__toggle" type="button" aria-expanded="true" aria-controls="foot-support-links">
+            <span>Get support</span><span class="foot__chevron" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <ul id="foot-support-links">
+          <li><a href="/support/">How we can support you</a></li>
+          <li><a href="/support/find-a-group.html">Find a local Sands group</a></li>
           <li><a href="/support/#talk">Talk to us</a></li>
           <li><a href="/support/contact.html">Contact us</a></li>
+          <li><a href="/support/online-support.html">Online support meetings</a></li>
           <li><a href="/support/memory-making.html">Memory making</a></li>
           <li><a href="/support/memorial-services.html">Free memorial services</a></li>
           <li><a href="/support/resources.html#certificate-of-life">Certificate of Life</a></li>
           <li><a href="/support/resources.html">Support resources</a></li>
-          <!-- <li><a href="/support/reading.html">Library &amp; books</a></li> -->
         </ul>
       </div>
-      <div>
-        <h2>What's On</h2>
-        <ul><li><a href="/events/">Dates &amp; events</a></li></ul>
+      <div class="foot__column">
+        <h2>
+          <button class="foot__toggle" type="button" aria-expanded="true" aria-controls="foot-events-links">
+            <span>Events</span><span class="foot__chevron" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <ul id="foot-events-links">
+          <li><a href="/events/">Remembrance and support events</a></li>
+        </ul>
       </div>
-      <div>
-        <h2>Support Our Work</h2>
-        <ul>
-          <li><a href="/donate/">Donate &amp; join</a></li>
+      <div class="foot__column">
+        <h2>
+          <button class="foot__toggle" type="button" aria-expanded="true" aria-controls="foot-help-links">
+            <span>Help Sands</span><span class="foot__chevron" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <ul id="foot-help-links">
+          <li><a href="/donate/">Support our work</a></li>
           <li><a href="/donate/about.html">About Sands</a></li>
           <li><a href="/donate/board.html">The NZ Board</a></li>
           <li><a href="/donate/training.html">Volunteer training</a></li>
         </ul>
       </div>
-      <div>
-        <h2>For Health Professionals</h2>
-        <ul><li><a href="/for-professionals/">Order, refer &amp; train</a></li></ul>
+      <div class="foot__column">
+        <h2>
+          <button class="foot__toggle" type="button" aria-expanded="true" aria-controls="foot-professionals-links">
+            <span>For health professionals</span><span class="foot__chevron" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <ul id="foot-professionals-links">
+          <li><a href="/for-professionals/">For health professionals</a></li>
+        </ul>
       </div>
     </div>
+
     <div class="foot__legal">
       <a href="/accessibility.html">Accessibility</a>
       <a href="/privacy.html">Privacy</a>
       <a href="https://www.google.co.nz" rel="noopener">Leave this site</a>
-      <span>© 2026 Sands New Zealand</span>
+      <span>&copy; 2026 Sands New Zealand</span>
       <span>Charities Commission CC30352</span>
     </div>
   </div>
