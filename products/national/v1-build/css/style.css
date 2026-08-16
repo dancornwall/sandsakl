@@ -227,6 +227,8 @@ a:hover { color: var(--terracotta-700); }
 
 /* ---- Home: hero block (contained to the content container) ----------- */
 .hero { padding-top: var(--space-5); }
+.home-doorways { padding-bottom: var(--space-4); }
+.home-intro { padding-top: 0; }
 .hero__inner {
   /* .hero__inner is also .wrap (max-width container-max, centred) */
   color: #fff;
@@ -478,15 +480,13 @@ a:hover { color: var(--terracotta-700); }
 .crisis {
   margin-top: var(--space-4); border: 1px solid var(--rule);
   border-left: 4px solid var(--crisis); border-radius: var(--radius);
-  padding: var(--space-3) var(--space-4); background: var(--paper);
+  padding: var(--space-3); background: var(--paper);
 }
 .crisis h3 { color: var(--crisis); font-size: var(--text-base); font-family: var(--font-body); font-weight: 700; margin-bottom: var(--space-2); }
 .crisis__intro { font-size: var(--text-sm); color: var(--ink-soft); margin-bottom: var(--space-3); }
-.crisis ul { list-style: none; margin: 0; padding: 0; }
-.crisis li { padding: var(--space-3) 0; border-top: 1px dotted var(--rule); }
-.crisis li:first-child { border-top: 0; }
-.crisis h4 { font-family: var(--font-body); font-size: var(--text-base); margin: 0 0 var(--space-1); }
-.crisis li p { margin: 0; }
+.crisis ul { margin: 0; padding-left: var(--space-4); }
+.crisis li { padding: 0; border: 0; margin-bottom: var(--space-2); }
+.crisis li:last-child { margin-bottom: 0; }
 .crisis__urgent { margin: var(--space-3) 0 0; }
 
 .meeting-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
