@@ -30,6 +30,7 @@ Open <http://localhost:8124/> (use a different port if Auckland v3 is already on
 | **N4** | Volunteer training | `support-our-work/training.html` |
 | **S1** | Memory making | `support/memory-making.html` |
 | **S2** | Free memorial services | `support/memorial-services.html` |
+| **OS** | Online support meetings | `support/online-support.html` + Support index block |
 | **CoL** | Certificate of Life (within Support resources) | `support/resources.html#certificate-of-life` |
 | **S3–S4** | Pamphlet/books gap | [`../audits/pamphlet-books-gap.md`](../audits/pamphlet-books-gap.md) |
 

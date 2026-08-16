@@ -470,10 +470,17 @@ a:hover { color: var(--terracotta-700); }
   padding: var(--space-3) var(--space-4); background: var(--paper);
 }
 .crisis h3 { color: var(--crisis); font-size: var(--text-base); font-family: var(--font-body); font-weight: 700; margin-bottom: var(--space-2); }
+.crisis__intro { font-size: var(--text-sm); color: var(--ink-soft); margin-bottom: var(--space-3); }
 .crisis ul { list-style: none; margin: 0; padding: 0; }
-.crisis li { display: flex; justify-content: space-between; gap: var(--space-3); padding: var(--space-1) 0; border-top: 1px dotted var(--rule); }
+.crisis li { padding: var(--space-3) 0; border-top: 1px dotted var(--rule); }
 .crisis li:first-child { border-top: 0; }
-.crisis .num { font-weight: 700; white-space: nowrap; }
+.crisis h4 { font-family: var(--font-body); font-size: var(--text-base); margin: 0 0 var(--space-1); }
+.crisis li p { margin: 0; }
+.crisis__urgent { margin: var(--space-3) 0 0; }
+
+.meeting-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.meeting-grid .card h2 { font-size: var(--text-xl); margin: 0; }
+@media (max-width: 767px) { .meeting-grid { grid-template-columns: 1fr; } }
 
 .thumbrow { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 559px) { .thumbrow { grid-template-columns: 1fr; } }

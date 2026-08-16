@@ -16,7 +16,6 @@ Copy Tania supplied is on the site. Items below still need an asset, a URL, a de
 - [ ] **Booklet PDF: *A little life, not a little loss*.** Placeholder `[Link to booklet]` on:
   - `orientation/my-baby-died.html`
   - `orientation/medical-reasons.html`
-- [ ] **Pregnancy After Loss monthly online meeting.** Placeholder on `orientation/pregnant-again.html` (“link to info”). Needs a What’s On or Support URL.
 - [ ] **Pregnancy After Loss Support Group** card on `orientation/pregnant-again.html`. Needs the group URL.
 
 ## Questions Tania raised (need a decision)
